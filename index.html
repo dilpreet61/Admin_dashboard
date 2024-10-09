@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link
+    rel="stylesheet"
+    
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <title>Dashboard</title>
+  <style>
+    #loginSection {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+      }
+      .login-container {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .login-container h2 {
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .login-container input {
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .login-container button {
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #0064D0;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      #dashboardSection {
+        display: none;
+      }
+  </style>
+  
+</head>
+<body>
+    <div id="loginSection">
+        <div class="login-container">
+          <h2>Login</h2>
+          <input type="text" id="username" placeholder="Username" required>
+          <input type="password" id="password" placeholder="Password" required>
+          <button onclick="login()">Login</button>
+        </div>
+      </div>
+
+      <div id="dashboardSection">
+  <div class="container">
+    <nav>
+      <ul>
+        <li>
+          <a href="#" class="logo">
+            <img src="logo.jpg" alt="" />
+            <span class="nav-item">NextGen</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-home"></i>
+            <span class="nav-item">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="#teams">
+            <i class="fas fa-user"></i>
+            <span class="nav-item">Teams</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#progress">
+            <i class="fas fa-chart-bar"></i>
+            <span class="nav-item">Progress</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fas fa-tasks"></i>
+            <span class="nav-item">Tasks</span>
+          </a>
+        </li>
+        
+       
+        <li>
+          <a href="index.html" class="logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="nav-item">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="main">
+      <div class="main-top" id="teams">
+        <h1 style="margin: auto">TEAMS</h1>
+        
+      </div>
+      <div class="main-skills">
+        <div class="card" data-team="1">
+          <i class="fas fa-users"></i>
+          <h3>Team 1</h3>
+          <h4>Team leader: Ram</h4>
+          <button style="background-color:#0064D0">Team details</button>
+        </div>
+        <div class="card" data-team="2">
+          <i class="fas fa-users"></i>
+          <h3>Team 2</h3>
+          <h4>Team leader: Lakshman</h4>
+          <button style="background-color:#0064D0">Team details</button>
+        </div>
+        <div class="card" data-team="3">
+          <i class="fas fa-users"></i>
+          <h3>Team 3</h3>
+          <h4>Team leader: Arjun</h4>
+          <button style="background-color:#0064D0">Team details</button>
+        </div>
+        <div class="card" data-team="4">
+          <i class="fas fa-users"></i>
+          <h3>Team 4</h3>
+          <h4>Team leader: Bheem</h4>
+          <button style="background-color:#0064D0">Team details</button>
+        </div>
+      </div>
+
+      <!-- Attendance Section -->
+      <div class="attendance-section" id="attendanceSection" style="display:none;">
+        <h2>Attendance</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Attendance</th>
+            </tr>
+          </thead>
+          <tbody id="attendanceBody">
+            <!-- Attendance data will be inserted here -->
+          </tbody>
+        </table>
+        <button onclick="closeAttendance()">Close</button>
+      </div>
+
+      <div class="calendar" id="calendarSection">
+        <h3 id="calendarTitle"></h3>
+        <table id="calendarTable"></table>
+        <button class="btn" onclick="closeCalendar()">Close Calendar</button>
+    </div>
+
+      
+      <div class="card-body" id="progress">
+        <br> <h1 class="card-title" style="margin:auto;width:130px;">PROGRESS</h1><br>
+        
+         <div class="table-responsive">
+             <table class="table table-striped">
+                 <thead>
+                     <tr>
+                         <th>
+                             User
+                         </th>
+                         <th>
+                             Teams
+                         </th>
+                         <th>
+                             Progress
+                         </th>
+                         <th>
+                             Tasks Completed
+                         </th>
+                         <th>
+                             Tasks Given
+                         </th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr>
+                         <td class="py-1">
+                             <img src="https://w7.pngwing.com/pngs/910/606/png-transparent-head-the-dummy-avatar-man-tie-jacket-user-thumbnail.png" alt="image">
+                         </td>
+                         <td>
+                             Team 1
+                         </td>
+                         <td>
+                             <div class="progress">
+                                 <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                      80%
+                                 </div>
+                             </div>
+                         </td>
+                         <td>
+                             8
+                         </td>
+                         <td>
+                             10
+                         </td>
+                     </tr>
+                     <tr>
+                         <td class="py-1">
+                             <img src="https://w7.pngwing.com/pngs/910/606/png-transparent-head-the-dummy-avatar-man-tie-jacket-user-thumbnail.png" alt="image">
+                         </td>
+                         <td>
+                             Team 2
+                         </td>
+                         <td>
+                             <div class="progress">
+                                 <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                90%
+                                 </div>
+                             </div>
+                         </td>
+                         <td>
+                             9
+                         </td>
+                         <td>
+                             10
+                         </td>
+                     </tr>
+                     <tr>
+                         <td class="py-1">
+                             <img src="https://w7.pngwing.com/pngs/910/606/png-transparent-head-the-dummy-avatar-man-tie-jacket-user-thumbnail.png" alt="image">
+                         </td>
+                         <td>
+                             Team 3
+                         </td>
+                         <td>
+                             <div class="progress">
+                                 <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                    75%
+                                 </div>
+                             </div>
+                         </td>
+                         <td>
+                             6
+                         </td>
+                         <td>
+                             8
+                         </td>
+                     </tr>
+                     <tr>
+                         <td class="py-1">
+                             <img src="https://w7.pngwing.com/pngs/910/606/png-transparent-head-the-dummy-avatar-man-tie-jacket-user-thumbnail.png" alt="image">
+                         </td>
+                         <td>
+                             Team 4
+                         </td>
+                         <td>
+                             <div class="progress">
+                                 <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                     100%
+                                 </div>
+                             </div>
+                         </td>
+                         <td>
+                             6
+                         </td>
+                         <td>
+                             6
+                         </td>
+                     </tr>
+                     
+                 </tbody>
+             </table>
+         </div>
+     </div>
+    </section>
+  </div>
+  </div>
+  
+
+  <script>
+    // Simulated attendance data
+    const attendanceData = {
+      1: {
+        members: [
+          { name: 'Ram', attendance: '90%' },
+          { name: 'Steve', attendance: '85%' },
+          { name: 'Tony', attendance: '88%' },
+          { name: 'Natasha', attendance: '95%' }
+        ]
+      },
+      2: {
+        members: [
+          { name: 'Lakshaman', attendance: '80%' },
+          { name: 'Nakul', attendance: '78%' },
+          { name: 'Sehdev', attendance: '82%' },
+          { name: 'Krishna', attendance: '90%' }
+        ]
+      },
+      3: {
+        members: [
+          { name: 'Arjun', attendance: '75%' },
+          { name: 'Rahul', attendance: '88%' },
+          { name: 'Aryan', attendance: '85%' },
+          { name: 'Bhavesh', attendance: '92%' }
+        ]
+      },
+      4: {
+        members: [
+          { name: 'Bheem', attendance: '80%' },
+          { name: 'Gagan', attendance: '82%' },
+          { name: 'Deepak', attendance: '89%' },
+          { name: 'Hardik', attendance: '93%' }
+        ]
+      }
+    };
+
+    // Function to display attendance when a team is clicked
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', function () {
+        const teamId = this.getAttribute('data-team');
+        showAttendance(teamId);
+      });
+    });
+
+    function showAttendance(teamId) {
+      const attendanceSection = document.getElementById('attendanceSection');
+      const attendanceBody = document.getElementById('attendanceBody');
+      const team = attendanceData[teamId];
+
+      // Clear previous attendance data
+      attendanceBody.innerHTML = '';
+
+      // Populate new attendance data
+      team.members.forEach(member => {
+        const row = `<tr><td>${member.name}</td><td>${member.attendance}</td></tr>`;
+        attendanceBody.innerHTML += row;
+      });
+
+      // Show the attendance section
+      attendanceSection.style.display = 'block';
+    }
+
+    // Function to close attendance section
+    function closeAttendance() {
+      document.getElementById('attendanceSection').style.display = 'none';
+    }
+
+
+
+    const attendanceDatas = {
+      1: {
+          members: [
+              { 
+                  name: 'Ram', 
+                  attendance: '90%',
+                  calendar: {
+                      present: [1, 2, 3, 4, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 21, 22, 23, 24, 25],
+                      absent: [5, 12, 19]
+                  }
+              },
+              { 
+                  name: 'Steve', 
+                  attendance: '85%',
+                  calendar: {
+                      present: [1, 2, 3, 7, 8, 9, 10, 14, 15, 16, 17, 21, 22, 23, 24, 28, 29, 30],
+                      absent: [4, 11, 18, 25]
+                  }
+              },
+              { 
+                  name: 'Tony', 
+                  attendance: '88%',
+                  calendar: {
+                      present: [1, 2, 3, 4, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 21, 22, 23, 24],
+                      absent: [5, 12, 19, 25]
+                  }
+              },
+              { 
+                  name: 'Natasha', 
+                  attendance: '95%',
+                  calendar: {
+                      present: [1, 2, 3, 4, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 21, 22, 23, 24, 25, 28, 29, 30],
+                      absent: [5]
+                  }
+              }
+          ]
+      },
+      2: {
+          members: [
+              { 
+                  name: 'Lakshman', 
+                  attendance: '80%',
+                  calendar: {
+                      present: [1, 2, 3, 7, 8, 9, 10, 14, 15, 16, 17, 21, 22, 23, 24],
+                      absent: [4, 11, 18, 25]
+                  }
+              },
+              { 
+                  name: 'Nakul', 
+                  attendance: '78%',
+                  calendar: {
+                      present: [1, 2, 3, 7, 8, 9, 14, 15, 16, 21, 22, 23, 28, 29, 30],
+                      absent: [4, 10, 11, 17, 18, 24, 25]
+                  }
+              },
+              { 
+                  name: 'Sehdev', 
+                  attendance: '82%',
+                  calendar: {
+                      present: [1, 2, 3, 4, 7, 8, 9, 10, 14, 15, 16, 17, 21, 22, 23, 24],
+                      absent: [11, 18, 25]
+                  }
+              },
+              { 
+                  name: 'Krishna', 
+                  attendance: '90%',
+                  calendar: {
+                      present: [1, 2, 3, 4, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 21, 22, 23, 24, 25, 28, 29],
+                      absent: [5, 12]
+                  }
+              }
+          ]
+      },
+      3: {
+          members: [
+              { 
+                  name: 'Arjun', 
+                  attendance: '75%',
+                  calendar: {
+                      present: [1, 2, 3, 7, 8, 9, 14, 15, 16, 21, 22, 23, 28, 29, 30],
+                      absent: [4, 10, 11, 17, 18, 24, 25]
+                  }
+              },
+              { 
+                  name: 'Rahul', 
+                  attendance: '88%',
+                  calendar: {
+                      present: [1, 2, 3, 4, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 21, 22, 23, 24],
+                      absent: [5, 12, 19, 25]
+                  }
+              },
+              { 
+                  name: 'Aryan', 
+                  attendance: '85%',
+                  calendar: {
+                      present: [1, 2, 3, 7, 8, 9, 10, 14, 15, 16, 17, 21, 22, 23, 24, 28, 29, 30],
+                      absent: [4, 11, 18, 25]
+                  }
+              },
+              { 
+                  name: 'Bhavesh', 
+                  attendance: '92%',
+                  calendar: {
+                      present: [1, 2, 3, 4, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 21, 22, 23, 24, 25, 28, 29],
+                      absent: [5, 12]
+                  }
+              }
+          ]
+      },
+      4: {
+          members: [
+              { 
+                  name: 'Bheem', 
+                  attendance: '80%',
+                  calendar: {
+                      present: [1, 2, 3, 7, 8, 9, 10, 14, 15, 16, 17, 21, 22, 23, 24],
+                      absent: [4, 11, 18, 25]
+                  }
+              },
+              { 
+                  name: 'Gagan', 
+                  attendance: '82%',
+                  calendar: {
+                      present: [1, 2, 3, 4, 7, 8, 9, 10, 14, 15, 16, 17, 21, 22, 23, 24],
+                      absent: [11, 18, 25]
+                  }
+              },
+              { 
+                  name: 'Deepak', 
+                  attendance: '89%',
+                  calendar: {
+                      present: [1, 2, 3, 4, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 21, 22, 23, 24, 28, 29],
+                      absent: [5, 12, 25]
+                  }
+              },
+              { 
+                  name: 'Hardik', 
+                  attendance: '93%',
+                  calendar: {
+                      present: [1, 2, 3, 4, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 21, 22, 23, 24, 25, 28, 29, 30],
+                      absent: [5]
+                  }
+              }
+          ]
+      }
+  };
+
+  function showAttendance(teamId) {
+      const attendanceSection = document.getElementById('attendanceSection');
+      const attendanceBody = document.getElementById('attendanceBody');
+      const team = attendanceDatas[teamId];
+
+      attendanceBody.innerHTML = '';
+
+      team.members.forEach(member => {
+          const row = `<tr><td><a href="#" onclick="showCalendar('${member.name}', ${teamId})">${member.name}</a></td><td>${member.attendance}</td></tr>`;
+          attendanceBody.innerHTML += row;
+      });
+
+      attendanceSection.style.display = 'block';
+  }
+
+  function showCalendar(memberName, teamId) {
+      const calendarSection = document.getElementById('calendarSection');
+      const calendarTitle = document.getElementById('calendarTitle');
+      const calendarTable = document.getElementById('calendarTable');
+      const member = attendanceDatas[teamId].members.find(m => m.name === memberName);
+
+      calendarTitle.textContent = `${memberName}'s Attendance Calendar`;
+
+      const currentDate = new Date();
+      const currentMonth = currentDate.getMonth();
+      const currentYear = currentDate.getFullYear();
+
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+      const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+
+      let calendarHTML = `
+          <tr>
+              <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+          </tr>
+          <tr>
+      `;
+
+      for (let i = 0; i < firstDay; i++) {
+          calendarHTML += '<td></td>';
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+          if ((day + firstDay - 1) % 7 === 0) {
+              calendarHTML += '</tr><tr>';
+          }
+
+          let cellClass = '';
+          if (member.calendar.present.includes(day)) {
+              cellClass = 'present';
+          } else if (member.calendar.absent.includes(day)) {
+              cellClass = 'absent';
+          }
+
+          calendarHTML += `<td class="${cellClass}">${day}</td>`;
+      }
+
+      calendarHTML += '</tr>';
+      calendarTable.innerHTML = calendarHTML;
+      calendarSection.style.display = 'block';
+  }
+
+  function closeCalendar() {
+      document.getElementById('calendarSection').style.display = 'none';
+  }
+
+  function closeAttendance() {
+      document.getElementById('attendanceSection').style.display = 'none';
+  }
+  function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    if (username === 'admin' && password === 'password') {
+      document.getElementById('loginSection').style.display = 'none';
+      document.getElementById('dashboardSection').style.display = 'block';
+    } else {
+      alert('Invalid credentials. Please try again.');
+    }
+  }
+
+  function logout() {
+    document.getElementById('loginSection').style.display = 'flex';
+    document.getElementById('dashboardSection').style.display = 'none';
+  }
+  
+
+    
+  </script>
+</body>
+</html>
