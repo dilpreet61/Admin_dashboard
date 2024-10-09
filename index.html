@@ -4,46 +4,61 @@
   <meta charset="UTF-8" />
   <link
     rel="stylesheet"
-    
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-  />
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
   <link rel="stylesheet" href="style.css" />
   <title>Dashboard</title>
   <style>
     #loginSection {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f0f0f0;
-      }
-      .login-container {
-        background-color: white;
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-      .login-container h2 {
-        margin-bottom: 1rem;
-        text-align: center;
-      }
-      .login-container input {
-        display: block;
-        width: 100%;
-        padding: 0.5rem;
-        margin-bottom: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-      }
-      .login-container button {
-        width: 100%;
-        padding: 0.5rem;
-        background-color: #0064D0;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+    background-color: #f0f0f0;
+}
+
+.login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    
+    gap: 1rem; 
+}
+
+.login-container, .abcd {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;/
+}
+
+.login-container h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.login-container input {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #0064D0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
       #dashboardSection {
         display: none;
       }
@@ -51,21 +66,31 @@
   
 </head>
 <body>
-    <div id="loginSection">
+  <div id="loginSection">
+    <div class="login-content">
         <div class="login-container">
-          <h2>Login</h2>
-          <input type="text" id="username" placeholder="Username" required>
-          <input type="password" id="password" placeholder="Password" required>
-          <button onclick="login()">Login</button>
+            <h2>Login</h2>
+            <p>Username:</p>
+            <input type="text" id="username" placeholder="Enter Username" required>
+            <p>Password:</p>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <button onclick="login()">Login</button>
         </div>
-      </div>
+
+        <div class="abcd">
+            <p>Username: admin</p>
+            <p>Password: admin</p>
+        </div>
+    </div>
+</div>
+
 
       <div id="dashboardSection">
   <div class="container">
     <nav>
       <ul>
         <li>
-          <a href="#" class="logo">
+          <a href="#loginSection" class="logo">
             <img src="logo.jpg" alt="" />
             <span class="nav-item">NextGen</span>
           </a>
@@ -98,7 +123,7 @@
         
        
         <li>
-          <a href="index.html" class="logout">
+          <a href="" class="logout">
             <i class="fas fa-sign-out-alt"></i>
             <span class="nav-item">Log out</span>
           </a>
@@ -570,7 +595,7 @@
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     
-    if (username === 'admin' && password === 'password') {
+    if (username === 'admin' && password === 'admin') {
       document.getElementById('loginSection').style.display = 'none';
       document.getElementById('dashboardSection').style.display = 'block';
     } else {
@@ -582,9 +607,7 @@
     document.getElementById('loginSection').style.display = 'flex';
     document.getElementById('dashboardSection').style.display = 'none';
   }
-  
-
-    
+     
   </script>
 </body>
 </html>
